@@ -10,7 +10,6 @@ function Alert(props) {
 
 const Home = () => {
     const [open, setOpen] = useState(false)
-    const [check, setCheck] = useState(false)
     const [value, setValue] = useState({
         id: '',
         activity: ''
