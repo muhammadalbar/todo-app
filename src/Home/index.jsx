@@ -20,16 +20,22 @@ const Home = () => {
             activity: e.target.value
         })
     }
-    const handleSubmit = async(e) => {
-        list.push({
-            id: _uniqueId('prefix-'),
-            todo: value.activity
-        })
-        setOpen(true)
-        setValue({
-            activity: ''
-        })
-        localStorage.setItem('mydata', JSON.stringify(list))
+    const handleSubmit = () => {
+        if(value.activity === ''){
+            alert('Please insert your todos first')
+        }
+        else{
+            list.push({
+                id: _uniqueId('prefix-'),
+                todo: value.activity
+            })
+            setOpen(true)
+            setValue({
+                activity: ''
+            })
+            localStorage.setItem('mydata', JSON.stringify(list))
+        }
+        
     }
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
@@ -87,7 +93,7 @@ const Home = () => {
                         ))}
                 </Flex>
                 {open && (
-                    <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                    <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
                         <Alert onClose={handleClose} severity="success">
                             Success adding todo
                         </Alert>
